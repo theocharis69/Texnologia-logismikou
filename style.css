@@ -108,15 +108,15 @@ body.dark-theme .signup-container {
   border-radius: 4px;
 }
 
-button[type="submit"] {
+.btn {
+  background-color: #45a049;
+  height: 35px;
   width: 100%;
-  padding: 10px;
-  background-color: #4caf50;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
   font-size: 16px;
+  padding: 0 10px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
 }
 
 button[type="submit"]:hover {
