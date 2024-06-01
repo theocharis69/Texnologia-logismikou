@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <a href="/homepage.php" class="nav-link" id="Go-Back">Go back</a>
+    <a href="homepage.php" class="nav-link" id="Go-Back">Go back</a>
     <div class="login-container">
       <button id="theme-toggle">Change to Dark</button>
       <form class="login-form">

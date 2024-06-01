@@ -11,8 +11,8 @@
     <header>
       <h2>Pnp & Nodas</h2>
       <nav>
-        <a href="signup.html" class="nav-link">Sign Up</a>
-        <a href="login.html" class="nav-link">Log In</a>
+        <a href="signup.php" class="nav-link">Sign Up</a>
+        <a href="login.php" class="nav-link">Log In</a>
         <button id="theme-toggle">Change to Dark</button>
       </nav>
     </header>
