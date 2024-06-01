@@ -225,3 +225,8 @@ body.dark-theme footer {
   font-size: 12px;
   margin-top: 5px;
 }
+
+#Go-Back {
+  position: absolute;
+  right: 30px;
+}
