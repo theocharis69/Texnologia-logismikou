@@ -1,4 +1,4 @@
-<!-- File path: /mnt/data/signup.html -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,6 +10,41 @@
   <body>
     <a href="homepage.php" class="nav-link" id="Go-Back">Go back</a>
     <div class="signup-container">
+      <?php
+           
+         include("php/config.php");
+         if(isset($_POST['submit'])){
+            $username = $_POST['username'];
+            $email = $_POST['email'];
+            $name = $_POST['name'];
+            $surname = $_POST['surname'];
+            $password = $_POST['password'];
+
+         //verifying the unique email
+
+         $verify_query = mysqli_query($con,"SELECT email FROM users WHERE email='$email'");
+
+         if(mysqli_num_rows($verify_query) !=0 ){
+            echo "<div class='message'>
+                      <p>This email is used, Try another One Please!</p>
+                  </div> <br>";
+            echo "<a href='javascript:self.history.back()'><button class='btn'>Go Back</button>";
+         }
+         else{
+
+            mysqli_query($con,"INSERT INTO test(Username,Email,Name,Surname,Password) VALUES('$username','$email','$name','$surname','$password')") or die("Error Occured");
+
+            echo "<div class='message'>
+                      <p>Registration successfully!</p>
+                  </div> <br>";
+            echo "<a href='index.php'><button class='btn'>Login Now</button>";
+         
+
+         }
+
+         }else{
+         
+      ?>
       <button id="theme-toggle">Change to Dark</button>
       <form class="signup-form" id="signup-form">
         <h2>Sign Up</h2>
@@ -45,6 +80,7 @@
         </div>
         <button type="submit">Sign Up</button>
       </form>
+      <?php } ?>
     </div>
     <script src="script.js"></script>
   </body>
