@@ -1,6 +1,6 @@
 <?php
 
-$con = mysqli_connect("localhost","root","","test") or die ("Could not connect.");
+$con = mysqli_connect("localhost","root","","xaris") or die ("Could not connect.");
 
 
 ?>

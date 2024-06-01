@@ -1,4 +1,9 @@
 
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,43 +15,8 @@
   <body>
     <a href="homepage.php" class="nav-link" id="Go-Back">Go back</a>
     <div class="signup-container">
-      <?php
-           
-         include("php/config.php");
-         if(isset($_POST['submit'])){
-            $username = $_POST['username'];
-            $email = $_POST['email'];
-            $name = $_POST['name'];
-            $surname = $_POST['surname'];
-            $password = $_POST['password'];
-
-         //verifying the unique email
-
-         $verify_query = mysqli_query($con,"SELECT Email FROM User WHERE Email='$email'");
-
-         if(mysqli_num_rows($verify_query) !=0 ){
-            echo "<div class='message'>
-                      <p>This email is used, Try another One Please!</p>
-                  </div> <br>";
-            echo "<a href='javascript:self.history.back()'><button class='btn'>Go Back</button>";
-         }
-         else{
-
-            mysqli_query($con,"INSERT INTO User(Username,Email,Name,Surname,Password) VALUES('$username','$email','$name','$surname','$password')") or die("Error Occured");
-
-            echo "<div class='message'>
-                      <p>Registration successfully!</p>
-                  </div> <br>";
-            echo "<a href='index.php'><button class='btn'>Login Now</button>";
-         
-
-         }
-
-         }else{
-         
-      ?>
       <button id="theme-toggle">Change to Dark</button>
-      <form class="signup-form" id="signup-form">
+      <form class="signup-form" id="signup-form" method="POST">
         <h2>Sign Up</h2>
         <div class="form-group">
           <label for="name">Name</label>
@@ -78,11 +48,43 @@
             digit, one uppercase letter, and one special character.</small
           >
         </div>
-        <input type="submit" class="btn" name="submit" value="Register" required>
-      </form>
-     
+        <button class="btn" name="submit" type="submit">Submit</button>
+      </form> 
     </div>
-    <?php } ?>
     <script src="script.js"></script>
   </body>
 </html>
+
+
+<?php
+           
+   include("php/config.php");
+
+
+   if(isset($_POST['submit']))
+   {
+      $username = $_POST['username'];
+      $email = $_POST['email'];
+      $name = $_POST['name'];
+      $surname = $_POST['surname'];
+      $password = $_POST['password'];
+   }
+    
+   $query = mysqli_query($con, "Insert into user (username,name,surname,email,password) Values ('$username', '$name', '$surname', '$email', '$password')");
+   if($query)
+   {
+   echo "<p>Form submitted successfully.</p>";
+    echo "<button onclick=\"redirectToLogin()\">Go to Login Page</button>";
+    echo "<script>
+            function redirectToLogin() {
+                window.location.href = 'login.php';
+            }
+          </script>";
+    exit(); 
+   }
+   else
+   {
+    echo "Registration was unsuccesfull ";
+   }
+         
+?>
