@@ -57,11 +57,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
     $surname = $_POST['surname'];
     $password = $_POST['password'];
 
-    // Insert into the database
-    $query = mysqli_query($con, "INSERT INTO user (username, name, surname, email, password) VALUES ('$username', '$name', '$surname', '$email', '$password')");
+    $verify_query = mysqli_query($con, "select email from user where email = '$email'" );
+    $verify_name = mysqli_query($con,"select username from user where username = '$username'" );
 
-    // Check if the query was successful
-    if ($query) {
+    if (mysqli_num_rows($verify_query) !=0) {
+
+        echo "<p>This email is alreday used please try another.</p>";
+        echo "<button class='btn' onclick=\"redirectToSignup()\">Go Back</button>";
+        echo "<script>
+                function redirectToSignup() {
+                    window.location.href = 'signup.php';
+                }
+              </script>";
+    }
+    elseif (mysqli_num_rows($verify_name) !=0 )
+    {
+        echo "<p>This name is alreday used please try another.</p>";
+        echo "<button class='btn' onclick=\"redirectToSignup()\">Go Back</button>";
+        echo "<script>
+                function redirectToSignup() {
+                    window.location.href = 'signup.php';
+                }
+              </script>";
+    }
+    else
+    {
+        // Insert into the database
+        $query = mysqli_query($con, "INSERT INTO user (username, name, surname, email, password) VALUES ('$username', '$name', '$surname', '$email', '$password')");
+
+        // Check if the query was successful
+        if ($query) {
          echo "<p>Form submitted successfully.</p>";
         echo "<button class='btn' onclick=\"redirectToLogin()\">Go to Login Page</button>";
         echo "<script>
@@ -70,8 +95,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
                 }
               </script>";
         exit();
-    } else {
-        echo "Registration was unsuccessful.";
+    } else 
+    {
+    echo "Registration was unsuccessful.";
     }
+    }
+    
+
+    
 }
 ?>

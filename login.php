@@ -1,4 +1,4 @@
-<!-- File path: /mnt/data/login.html -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
