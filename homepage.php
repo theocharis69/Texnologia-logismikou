@@ -19,15 +19,16 @@
       <div class="accordion-container">
         <div class="accordion">
           <div class="accordion-item">
-            <button class="accordion-header">Accordion 1</button>
+            <button class="accordion-header">Who are we?</button>
             <div class="accordion-content">
-              <p>Content for Accordion 1.</p>
+              <p>We are a programming students team that we have developed this list management website.</p>
             </div>
           </div>
           <div class="accordion-item">
-            <button class="accordion-header">Accordion 2</button>
+            <button class="accordion-header">Where can i find the source code of this project?</button>
             <div class="accordion-content">
-              <p>Content for Accordion 2.</p>
+              <p>You can find the code <a href="https://github.com/theocharis69/Texnologia-logismikou" target="_blank" class="nav-link" style="color: blue;">Here</a></p>
+              
             </div>
           </div>
           <div class="accordion-item">
